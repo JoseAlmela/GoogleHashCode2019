@@ -39,10 +39,11 @@ namespace Solucionador
                     else {
                         if(vPhotos.Count > 1)
                         {
-                            presentation.Add(new Slide { Id1 = vPhotos.First().Index });
+                            var slide = new Slide { Id1 = vPhotos.First().Index };
                             vPhotos.RemoveAt(0);
-                            presentation.Add(new Slide { Id2 = vPhotos.First().Index });
+                            slide.Id2 = vPhotos.First().Index;
                             vPhotos.RemoveAt(0);
+                            presentation.Add(slide);
                         }
                         else if(vPhotos.Count == 1)
                         {
