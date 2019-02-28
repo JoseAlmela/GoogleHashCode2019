@@ -15,8 +15,9 @@ namespace Solucionador
         private const string inputE = "e_shiny_selfies.txt";
         static void Main(string[] args)
         {
+            var nomFix = inputA;
             Console.WriteLine("Hello World!");
-            var photos = LoadPhotos(Path.Combine(_PATH_, "input", inputC));
+            var photos = LoadPhotos(Path.Combine(_PATH_, "input", nomFix));
 
             var hPhotos = photos
                 .Where(p => p.IsHorizontal)
