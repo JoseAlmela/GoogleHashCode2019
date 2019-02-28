@@ -12,10 +12,11 @@ namespace Solucionador
     {
         private const string inputA = "a_example.txt";
         private const string inputC = "c_memorable_moments.txt";
+        private const string inputE = "e_shiny_selfies.txt";
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var photos = LoadPhotos(Path.Combine(_PATH_, "input", inputC));
+            var photos = LoadPhotos(Path.Combine(_PATH_, "input", inputE));
 
             var hPhotos = photos
                 .Where(p => p.IsHorizontal)
@@ -60,10 +61,11 @@ namespace Solucionador
                 {
                     if (vPhotos.Count > 1)
                     {
-                        presentation.Add(new Slide { Id1 = vPhotos.First().Index });
+                        var slide = new Slide { Id1 = vPhotos.First().Index };
                         vPhotos.RemoveAt(0);
-                        presentation.Add(new Slide { Id2 = vPhotos.First().Index });
+                        slide.Id2 = vPhotos.First().Index;
                         vPhotos.RemoveAt(0);
+                        presentation.Add(slide);
                     }
                     else
                     {
@@ -72,7 +74,7 @@ namespace Solucionador
                 }
             }
 
-            (new SlideShow { presentation = presentation }).ToFile();
+            (new SlideShow { presentation = presentation }).ToFile(inputE);
 
             Console.ReadKey();
         }
