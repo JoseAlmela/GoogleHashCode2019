@@ -100,6 +100,72 @@ namespace Solucionador
             return presentation;
         }
 
+        private static List<Slide> SolucionPanda2(Photo[] photos)
+        {
+            var hPhotos = photos
+                .Where(p => p.IsHorizontal)
+                .OrderByDescending(p => p.Tags.Length)
+                .ToList();
+            var vPhotos = photos
+                .Where(p => !p.IsHorizontal)
+                .OrderByDescending(p => p.Tags.Length)
+                .ToList();
+            List<Slide> presentation = new List<Slide>();
+
+            int puntuacion = panda2Helper(hPhotos, vPhotos, presentation);
+
+            //if (hPhotos.Count > 0 && vPhotos.Count > 0)
+            //{
+            //    if (hPhotos.First().Tags.Length > vPhotos.First().Tags.Length)
+            //    {
+            //        presentation.Add(new Slide { Id1 = hPhotos.First().Index });
+            //        hPhotos.RemoveAt(0);
+            //    }
+            //    else
+            //    {
+            //        if (vPhotos.Count > 1)
+            //        {
+            //            var slide = new Slide { Id1 = vPhotos.First().Index };
+            //            vPhotos.RemoveAt(0);
+            //            slide.Id2 = vPhotos.First().Index;
+            //            vPhotos.RemoveAt(0);
+            //            presentation.Add(slide);
+            //        }
+            //        else if (vPhotos.Count == 1)
+            //        {
+            //            vPhotos.RemoveAt(0);
+            //        }
+            //    }
+            //}
+            //else if (hPhotos.Count > 0)
+            //{
+            //    presentation.Add(new Slide { Id1 = hPhotos.First().Index });
+            //    hPhotos.RemoveAt(0);
+            //}
+            //else if (vPhotos.Count > 0)
+            //{
+            //    if (vPhotos.Count > 1)
+            //    {
+            //        var slide = new Slide { Id1 = vPhotos.First().Index };
+            //        vPhotos.RemoveAt(0);
+            //        slide.Id2 = vPhotos.First().Index;
+            //        vPhotos.RemoveAt(0);
+            //        presentation.Add(slide);
+            //    }
+            //    else
+            //    {
+            //        vPhotos.RemoveAt(0);
+            //    }
+            //}
+
+            return null;
+        }
+
+        private static int panda2Helper(List<Photo> hPhotos, List<Photo> vPhotos, List<Slide> resultado)
+        {
+            return 0;
+        }
+
         public static Photo[] LoadPhotos(string path)
         {
             List<string> lines = File.ReadAllLines(path).Skip(1).ToList();
