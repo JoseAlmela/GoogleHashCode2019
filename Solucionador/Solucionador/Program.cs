@@ -11,11 +11,11 @@ namespace Solucionador
     class Program
     {
         private const string inputA = "a_example.txt";
-
+        private const string inputC = "c_memorable_moments.txt";
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var photos = LoadPhotos(Path.Combine(_PATH_, "input", inputA));
+            var photos = LoadPhotos(Path.Combine(_PATH_, "input", inputC));
 
             var hPhotos = photos
                 .Where(p => p.IsHorizontal)
