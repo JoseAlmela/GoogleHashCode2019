@@ -45,6 +45,7 @@
     <Compile Include="Photo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SlideShow.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
