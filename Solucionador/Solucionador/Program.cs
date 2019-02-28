@@ -13,10 +13,22 @@ namespace Solucionador
 
         static void Main(string[] args)
         {
+            List<Photo> photos;
             Console.WriteLine("Hello World!");
             File.WriteAllLines(_PATH_, new string[] { "test222" });
 
             Console.ReadKey();
+        }
+
+        public static List<Photo> LoadPhotos()
+        {
+            List<Photo> photos = new List<Photo>();
+            string filename = "";
+
+            using (StreamReader stream = new StreamReader(Util._PATH_ + filename))
+            {
+                string firstLine = stream.ReadLine();
+            }
         }
     }
 }
