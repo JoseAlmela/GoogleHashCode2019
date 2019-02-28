@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solucionador
 {
-    class Photo
+    public class Photo
     {
         private bool isHorizontal;
         private List<string> tags;

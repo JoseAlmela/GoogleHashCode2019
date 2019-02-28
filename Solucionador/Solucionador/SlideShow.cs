@@ -8,5 +8,13 @@ namespace Solucionador
 {
     public class SlideShow
     {
+        List<Slide> presentation = new List<Slide>();
+    }
+
+    public class Slide
+    {
+        public Photo Photo1 { get; set; }
+        public Photo Photo2 { get; set; }
+
     }
 }
