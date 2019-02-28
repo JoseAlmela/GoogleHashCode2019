@@ -16,7 +16,7 @@ namespace Solucionador
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var photos = LoadPhotos(Path.Combine(_PATH_, "input", inputE));
+            var photos = LoadPhotos(Path.Combine(_PATH_, "input", inputC));
 
             var hPhotos = photos
                 .Where(p => p.IsHorizontal)
