@@ -11,7 +11,7 @@ namespace Solucionador
 {
     public class SlideShow
     {
-        List<Slide> presentation = new List<Slide>();
+        public List<Slide> presentation = new List<Slide>();
 
         public void ToFile() {
             var now = DateTime.Now;
@@ -21,7 +21,7 @@ namespace Solucionador
                 {
                     outputFileContent.Add(presentation[i].Id1.ToString() + (presentation[i].Id2.HasValue ? " " + presentation[i].Id2.ToString() : string.Empty));
                 }
-            File.WriteAllLines(Path.Combine(_PATH_, $"{now.Hour}{now.Minute}{now.Second}"), outputFileContent);
+            File.WriteAllLines(Path.Combine(_PATH_,"output", $"{now.Hour}{now.Minute}{now.Second}"), outputFileContent);
         }
     }
 

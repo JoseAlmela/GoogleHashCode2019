@@ -9,7 +9,7 @@ namespace Solucionador
     
     public class Util
     {
-        public const string _PATH_ = @"..\..\..\output\";
+        public const string _PATH_ = @"..\..\..\";
 
     }
 }
