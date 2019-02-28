@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace AnalisisTags
 {
-    class Program
+    class ProgramAnalisis
     {
         static void Main(string[] args)
         {
             string path = "C:/Users/carla/Desktop/hasCodeGoogle/example/";
             Dictionary<string, int> dicTags = new Dictionary<string, int>();
-            List<string> lines = File.ReadAllLines(path + "c_memorable_moments.txt").Skip(1).ToList();
+            List<string> lines = File.ReadAllLines(path + "e_shiny_selfies.txt").Skip(1).ToList();
 
             foreach (string line in lines)
             {
@@ -37,11 +37,11 @@ namespace AnalisisTags
 
             List<KeyValuePair<string, int>> listTags = dicTags.ToList().OrderBy(pair => pair.Value).ToList();
 
-            using (StreamWriter writer = new StreamWriter(path + "c_memorable_moments.result.txt"))
+            using (StreamWriter writer = new StreamWriter(path + "e_shiny_selfies.resultAnalisis.txt"))
             {
                 foreach (KeyValuePair<string, int> tag in listTags)
                 {
-                    string outputLine = "tag: " + tag.Key + " count: " + tag.Value;
+                    string outputLine = tag.Key + ";" + tag.Value;
                     writer.WriteLine(outputLine);
                 }
             }

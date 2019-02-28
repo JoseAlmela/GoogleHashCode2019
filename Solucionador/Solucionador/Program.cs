@@ -25,7 +25,7 @@ namespace Solucionador
             var photosE = LoadPhotos(Path.Combine(_PATH_, "input", inputE));
 
 
-            (new SlideShow { presentation = SolucionPanda2(photosA)}).ToFile(inputA);
+ /*           (new SlideShow { presentation = SolucionPanda2(photosA)}).ToFile(inputA);
 
             (new SlideShow { presentation = SolucionPanda2(photosB)}).ToFile(inputB);
 
@@ -33,7 +33,16 @@ namespace Solucionador
 
             (new SlideShow { presentation = SolucionPanda2(photosD) }).ToFile(inputD);
 
-            (new SlideShow { presentation = SolucionPanda2(photosE) }).ToFile(inputE);
+            (new SlideShow { presentation = SolucionPanda2(photosE) }).ToFile(inputE);*/
+            (new SlideShow { presentation = PandaCorrelativo.SolucionPandaCorrelativa(photosA, Path.Combine(_PATH_, "input", inputA)) }).ToFile(inputA);
+
+            (new SlideShow { presentation = PandaCorrelativo.SolucionPandaCorrelativa(photosB, Path.Combine(_PATH_, "input", inputB)) }).ToFile(inputB);
+
+            (new SlideShow { presentation = PandaCorrelativo.SolucionPandaCorrelativa(photosC, Path.Combine(_PATH_, "input", inputC)) }).ToFile(inputC);
+
+            (new SlideShow { presentation = PandaCorrelativo.SolucionPandaCorrelativa(photosD, Path.Combine(_PATH_, "input", inputD)) }).ToFile(inputD);
+
+            (new SlideShow { presentation = PandaCorrelativo.SolucionPandaCorrelativa(photosE, Path.Combine(_PATH_, "input", inputE)) }).ToFile(inputE);
 
             Console.ReadKey();
         }
