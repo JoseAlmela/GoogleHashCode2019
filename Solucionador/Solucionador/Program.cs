@@ -25,12 +25,14 @@ namespace Solucionador
             List<string> lines = File.ReadAllLines(path).Skip(1).ToList();
             List<Photo> photos = new List<Photo>();
 
-            foreach (string line in lines)
+            for (int index = 0; index < lines.Count; index++)
             {
+                string line = lines[index];
                 string[] words = line.Split(' ');
                 string[] tags = words.Skip(2).ToArray();
                 Photo photo = new Photo()
                 {
+                    Index = index,
                     IsHorizontal = words[0] == "H",
                     Tags = tags,
                 };
