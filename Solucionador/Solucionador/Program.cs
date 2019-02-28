@@ -25,15 +25,15 @@ namespace Solucionador
             var photosE = LoadPhotos(Path.Combine(_PATH_, "input", inputE));
 
 
-            (new SlideShow { presentation = SolucionPanda1(photosA)}).ToFile(inputA);
+            (new SlideShow { presentation = SolucionPanda2(photosA)}).ToFile(inputA);
 
-            (new SlideShow { presentation = SolucionPanda1(photosB)}).ToFile(inputB);
+            (new SlideShow { presentation = SolucionPanda2(photosB)}).ToFile(inputB);
 
-            (new SlideShow { presentation = SolucionPanda1(photosC) }).ToFile(inputC);
+            (new SlideShow { presentation = SolucionPanda2(photosC) }).ToFile(inputC);
 
-            (new SlideShow { presentation = SolucionPanda1(photosD) }).ToFile(inputD);
+            (new SlideShow { presentation = SolucionPanda2(photosD) }).ToFile(inputD);
 
-            (new SlideShow { presentation = SolucionPanda1(photosE) }).ToFile(inputE);
+            (new SlideShow { presentation = SolucionPanda2(photosE) }).ToFile(inputE);
 
             Console.ReadKey();
         }
@@ -110,60 +110,23 @@ namespace Solucionador
                 .Where(p => !p.IsHorizontal)
                 .OrderByDescending(p => p.Tags.Length)
                 .ToList();
-            List<Slide> presentation = new List<Slide>();
 
-            int puntuacion = panda2Helper(hPhotos, vPhotos, presentation);
-
-            //if (hPhotos.Count > 0 && vPhotos.Count > 0)
-            //{
-            //    if (hPhotos.First().Tags.Length > vPhotos.First().Tags.Length)
-            //    {
-            //        presentation.Add(new Slide { Id1 = hPhotos.First().Index });
-            //        hPhotos.RemoveAt(0);
-            //    }
-            //    else
-            //    {
-            //        if (vPhotos.Count > 1)
-            //        {
-            //            var slide = new Slide { Id1 = vPhotos.First().Index };
-            //            vPhotos.RemoveAt(0);
-            //            slide.Id2 = vPhotos.First().Index;
-            //            vPhotos.RemoveAt(0);
-            //            presentation.Add(slide);
-            //        }
-            //        else if (vPhotos.Count == 1)
-            //        {
-            //            vPhotos.RemoveAt(0);
-            //        }
-            //    }
-            //}
-            //else if (hPhotos.Count > 0)
-            //{
-            //    presentation.Add(new Slide { Id1 = hPhotos.First().Index });
-            //    hPhotos.RemoveAt(0);
-            //}
-            //else if (vPhotos.Count > 0)
-            //{
-            //    if (vPhotos.Count > 1)
-            //    {
-            //        var slide = new Slide { Id1 = vPhotos.First().Index };
-            //        vPhotos.RemoveAt(0);
-            //        slide.Id2 = vPhotos.First().Index;
-            //        vPhotos.RemoveAt(0);
-            //        presentation.Add(slide);
-            //    }
-            //    else
-            //    {
-            //        vPhotos.RemoveAt(0);
-            //    }
-            //}
-
-            return null;
+            return  panda2Helper(hPhotos, vPhotos);
         }
 
-        private static int panda2Helper(List<Photo> hPhotos, List<Photo> vPhotos, List<Slide> resultado)
+        private static List<Slide> panda2Helper(List<Photo> hPhotos, List<Photo> vPhotos)
         {
-            return 0;
+            var hSlides = hPhotos.Select(p => new Slide { Id1 = p.Index }).ToList();
+            var vSlides = new List<Slide>();
+            for (int i = 0; i < vPhotos.Count; i += 2)
+            {
+                vSlides.Add(new Slide { Id1 = vPhotos[i].Index, Id2 = vPhotos[i + 1].Index });
+            }
+
+            var allSlides = hSlides.ToList();
+            allSlides.AddRange(vSlides);
+
+            return allSlides;
         }
 
         public static Photo[] LoadPhotos(string path)
