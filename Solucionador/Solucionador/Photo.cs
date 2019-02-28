@@ -8,10 +8,8 @@ namespace Solucionador
 {
     public class Photo
     {
-        private bool isHorizontal;
-        private List<string> tags;
 
-        public bool IsHorizontal { get => isHorizontal; set => isHorizontal = value; }
-        public List<string> Tags { get => tags; set => tags = value; }
+        public bool IsHorizontal { get; set; }
+        public string[] Tags { get; set; }
     }
 }

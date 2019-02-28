@@ -20,15 +20,25 @@ namespace Solucionador
             Console.ReadKey();
         }
 
-        public static List<Photo> LoadPhotos()
+        public static Photo[] LoadPhotos(string path)
         {
+            List<string> lines = File.ReadAllLines(path).Skip(1).ToList();
             List<Photo> photos = new List<Photo>();
-            string filename = "";
 
-            using (StreamReader stream = new StreamReader(Util._PATH_ + filename))
+            foreach (string line in lines)
             {
-                string firstLine = stream.ReadLine();
+                string[] words = line.Split(' ');
+                string[] tags = words.Skip(2).ToArray();
+                Photo photo = new Photo()
+                {
+                    IsHorizontal = words[0] == "H",
+                    Tags = tags,
+                };
+
+                photos.Add(photo);
             }
+
+            return photos.ToArray();
         }
     }
 }
